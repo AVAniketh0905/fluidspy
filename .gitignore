@@ -4,6 +4,10 @@ env/*
 # pypi config
 .pypirc
 
+# format cache
+.ruff_cache/
+.pytest_cache/
+
 # pypi build
 build/*
 dist/*
