@@ -1,6 +1,9 @@
-env/
+# virtual environment
+env/*
 
+# pypi config
 .pypirc
 
-build/
-dist/
+# pypi build
+build/*
+dist/*
