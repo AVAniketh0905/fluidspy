@@ -1,5 +1,5 @@
-from typing import Callable, List, Optional
 from ..constant import DIRECTION, DIM
+from typing import Callable, List, Optional
 
 
 class Order:

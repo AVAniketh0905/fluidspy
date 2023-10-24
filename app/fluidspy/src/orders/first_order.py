@@ -1,5 +1,5 @@
-from typing import Callable, List, Optional
 from .orders_caller import Order
+from typing import Callable, List, Optional
 
 
 class FirstOrder(Order):
