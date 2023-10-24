@@ -1,0 +1,5 @@
+numpy>=1.24
+typing>=3.7
+
+[dev]
+twine>=4.0.0

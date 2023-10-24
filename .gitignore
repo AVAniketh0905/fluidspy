@@ -1,0 +1,6 @@
+env/
+
+.pypirc
+
+build/
+dist/
