@@ -7,7 +7,8 @@ from .orders_caller import Order
 
 class SecondOrder(Order):
     """
-    The SecondOrder class is a callable class that implements the second-order Taylor approximation of a function.
+    The SecondOrder class is a callable class that implements the
+    second-order Taylor approximation of a function.
 
     Args:
         direction (DIRECTION): The direction of the Taylor approximation.
@@ -25,13 +26,9 @@ class SecondOrder(Order):
         else:
             raise ValueError("Invalid direction!")
 
-    def two_dim(
-        self, f: Callable, vector: List, step: List, axis: Optional[int]
-    ) -> float:
+    def two_dim(self, f: Callable, vector: List, step: List, axis: Optional[int]) -> float:
         if not step[axis]:
-            raise ValueError(
-                f"Invalid axis! The axis values shoulde be less than {len(vector)}."
-            )
+            raise ValueError(f"Invalid axis! The axis values shoulde be less than {len(vector)}.")
 
         if self.direction == "forward":
             return (

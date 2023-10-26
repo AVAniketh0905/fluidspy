@@ -49,4 +49,4 @@ class Order:
             raise ValueError("Invalid dimension!")
 
     def __str__(self) -> str:
-        return f"Calling from FirstOrder with {self.direction} difference with a function of {self.dim} dimension."
+        return f"{self.direction} difference with a function of {self.dim} dimension."

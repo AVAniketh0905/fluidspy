@@ -1,15 +1,15 @@
 from setuptools import find_packages
 from setuptools import setup
 
-with open("app/README.md", "r") as f:
+with open("fluidspylib/README.md", "r") as f:
     long_description = f.read()
 
 setup(
     name="fluidspy",
-    version="0.0.3",
+    version="0.0.5",
     description="Implementation of CFD methods in Python",
-    package_dir={"": "app"},
-    packages=find_packages(where="app"),
+    package_dir={"": "fluidspylib"},
+    packages=find_packages(where="fluidspylib"),
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="A V Aniketh",

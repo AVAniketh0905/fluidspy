@@ -28,7 +28,9 @@ class ORDER(Enum):
 
 class DIM(Enum):
     """
-    The DIM class is an enumeration that defines the possible dimensions for the function. The possible values are: ONE, TWO, and THREE.
+    The DIM class is an enumeration that defines the
+    possible dimensions for the function. The possible values are:
+    ONE, TWO, and THREE.
     If used in PDE's the default value is TWO. (i.e. time and space)
 
     Args:
@@ -42,7 +44,9 @@ class DIM(Enum):
 
 class METHOD(Enum):
     """
-    The METHOD class is an enumeration that defines the possible methods for solving the PDE. The possible values are: EXPLICIT and IMPLICIT.
+    The METHOD class is an enumeration that defines the possible
+    methods for solving the PDE. The possible values are:
+    EXPLICIT and IMPLICIT.
 
     Args:
         Enum (str): The enumeration class.

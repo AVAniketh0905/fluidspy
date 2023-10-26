@@ -13,4 +13,4 @@ repos:
     rev: v3.12.0
     hooks:
       - id: reorder-python-imports
-        args: ["--application-directories=.:src", --py38-plus]
+        args: ["--application-directories=.:fluidspylib", --py38-plus]

@@ -1,6 +1,4 @@
-from fluidspy.src.orders.first_order import FirstOrder
-
-# from fluidspy.src.orders.second_order import SecondOrder
+from fluidspy.numerical.orders import FirstOrder
 
 
 def test_first_order():

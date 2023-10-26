@@ -1,0 +1,2 @@
+def animate():
+    return True

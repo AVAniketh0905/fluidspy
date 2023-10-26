@@ -1,9 +1,13 @@
 import numpy as np
-from fluidspy import taylor_methods, finite_element_method
+
+from fluidspy.numerical.pde.finite_element_methods import finite_element_method
+from fluidspy.numerical.taylor.taylor_caller import taylor_methods
 
 
 def testing_one_dim_taylor():
-    f = lambda x: x**2 / 4
+    def f(x):
+        return np.sin(x)
+
     x, h = 2.0, 0.1
 
     taylor = taylor_methods("central", "first", "one")
@@ -14,7 +18,8 @@ def testing_one_dim_taylor():
 
 
 def testting_twi_dim_taylor():
-    g = lambda t, x: np.cos(x) * np.sin(t)
+    def g(t, x):
+        return np.cos(x) * np.sin(t)
 
     taylor = taylor_methods("central", "first", "two")
     print(taylor, "step in time axis", f"{taylor(g, [1, 1], [0.1, 0], 0):.3f}")
@@ -28,7 +33,7 @@ def testing_ftcs():
     step, alpha = [0.1, 0.5], 5e-3
 
     fem = finite_element_method("explicit", logging=True)
-    states = fem("ftcs", 10, initial_state, step, alpha, 1e-4)
+    fem("ftcs", 10, initial_state, step, alpha, 1e-4)
     F_o = alpha * step[0] / step[1] ** 2
 
     print("F_o = {:.3f}".format(F_o))

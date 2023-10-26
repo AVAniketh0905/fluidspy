@@ -31,9 +31,7 @@ class Explicit(FiniteElementMethod):
         size = len(initial_state)
 
         if F_o > 0.5:
-            raise ValueError(
-                "The solution is unstable! Please choose a smaller time step."
-            )
+            raise ValueError("The solution is unstable! Please choose a smaller time step.")
 
         parametric_matrix = [0 for _ in range(size)]
         for i in range(size):
