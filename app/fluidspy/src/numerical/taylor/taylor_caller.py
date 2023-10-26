@@ -1,5 +1,8 @@
 from typing import Callable
-from ..constant import DIRECTION, ORDER, DIM
+
+from ..constant import DIM
+from ..constant import DIRECTION
+from ..constant import ORDER
 from ..orders.first_order import FirstOrder
 from ..orders.second_order import SecondOrder
 

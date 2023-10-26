@@ -1,6 +1,9 @@
+from typing import Callable
+from typing import List
+
 import numpy as np
+
 from ..constant import METHOD
-from typing import Callable, List
 
 
 class FiniteElementMethod:

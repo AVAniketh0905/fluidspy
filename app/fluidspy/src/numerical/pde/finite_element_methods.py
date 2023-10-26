@@ -1,4 +1,5 @@
 from typing import Callable
+
 from ..constant import METHOD
 from .explicit import Explicit
 

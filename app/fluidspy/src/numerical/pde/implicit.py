@@ -1,4 +1,5 @@
 from typing import List
+
 from ..constant import METHOD
 from .fem import FiniteElementMethod
 
@@ -23,5 +24,6 @@ class Implicit(FiniteElementMethod):
         Returns:
             float: The solution of the PDE. ()
         """
-        parametric_matrix = [[0, 1, 0], [0, 0, 0], [0, 0, 0]]
+        # parametric_matrix = [[0, 1, 0], [0, 0, 0], [0, 0, 0]]
+
         pass
