@@ -38,14 +38,18 @@ print(taylor, f"{taylor(f, x, h):.3f}")
 ```
 
 ## Contributing
+
 If you want to contribute to this project, see `CONTRIBUTING.md` for guidelines.
 
 ## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
+
 AVAniketh0905 (dekomori_sanae09) -> adimoolamaniketh@gmail.com
 Project Link: [fluidspy](https://github.com/AVAniketh0905/fluidspy)
 
 ## Acknowledgments
+
 `Manim` has inspired me a lot!
