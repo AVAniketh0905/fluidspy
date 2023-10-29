@@ -1,6 +1,8 @@
 # fluidspy
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Pytest](https://github.com/github/docs/actions/workflows/test_pytest.yml/badge.svg)
+![Ruff](<[https](https://github.com/github/docs/actions/workflows/test_ruff.yml/badge.svg)>)
 
 Your `fluidspy` is a Python library for Computational Fluid Dynamics (CFD) simulations.
 
