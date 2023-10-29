@@ -22,9 +22,7 @@ setup(
     ],
     install_requires=["numpy>=1.24", "typing>=3.7"],
     extras_require={
-        "dev": [
-            "twine>=4.0.0",
-        ],
+        "dev": ["twine>=4.0.0", "pytest", "ruff", "black"],
     },
     python_requires=">=3.10",
 )

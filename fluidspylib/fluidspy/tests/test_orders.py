@@ -1,4 +1,4 @@
-from fluidspy.numerical.orders import FirstOrder
+from ..numerical.orders.first_order import FirstOrder
 
 
 def test_first_order():

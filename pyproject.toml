@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 110
-target-version = ['py38']
+target-version = ['py310']
 include = '\.pyi?$'
 exclude = '''(
     /(
@@ -9,6 +9,7 @@ exclude = '''(
         | \.hg/
         | \.mypy_cache/
         | \.tox/
+        | \.env/
         | \.venv/
         | _build/
         | buck-out/
@@ -27,25 +28,22 @@ exclude = '''(
 )'''
 
 [tool.ruff]
-line-length = 110
-
-# Enable Pyflakes `E` and `F` codes by default.
-select = ["E", "F"]
-ignore = ["F401"]
-
 # Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
     ".direnv",
     ".eggs",
     ".git",
+    ".git-rewrite",
     ".hg",
     ".mypy_cache",
     ".nox",
     ".pants.d",
+    ".pytype",
     ".ruff_cache",
     ".svn",
     ".tox",
+    ".env",
     ".venv",
     "__pypackages__",
     "_build",
@@ -53,15 +51,36 @@ exclude = [
     "build",
     "dist",
     "node_modules",
-    "venv",
+    "env",
 ]
-per-file-ignores = {}
+
+# Assume Python 3.10
+target-version = "py310"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = ["E4", "E7", "E9", "F"]
+ignore = ["F401"]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-# Assume Python 3.10.
-target-version = "py310"
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
 
 [tool.ruff.flake8-import-conventions.aliases]
 altair = "alt"
