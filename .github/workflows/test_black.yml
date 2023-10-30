@@ -1,4 +1,4 @@
-name: Ruff Test
+name: Black Test
 
 on: [push, pull_request]
 
@@ -18,6 +18,6 @@ jobs:
             python -m pip install --upgrade pip
             pip install ruff
       
-      - name: Ruff Check
-        run: ruff check fluidspylib/
+      - name: Blak Check
+        run: ruff --check fluidspylib/*
       

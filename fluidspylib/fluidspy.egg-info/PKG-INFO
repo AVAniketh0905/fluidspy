@@ -15,6 +15,9 @@ Requires-Dist: numpy>=1.24
 Requires-Dist: typing>=3.7
 Provides-Extra: dev
 Requires-Dist: twine>=4.0.0; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: black; extra == "dev"
 
 # fluidspy
 

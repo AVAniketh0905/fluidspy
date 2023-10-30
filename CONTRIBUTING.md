@@ -128,7 +128,7 @@ You'll need **[Python 3.10](<(https://github.com/AVAniketh0905/fluidspy/setup.py
 
    ```bash
    pip install -r requirements_dev.txt
-   pip install -e fluidspy
+   pip install -e .
    ```
 
    If `fluidspy` was already installed in the virtual environment, remove
@@ -152,12 +152,14 @@ You'll need **[Python 3.10](<(https://github.com/AVAniketh0905/fluidspy/setup.py
 
    ```bash
     // TODO
+   ruff format fluidspylib/
    ```
 
    - Black (code formatting):
 
    ```bash
    // TODO
+   black --pyi fluidspylib/
    ```
 
 Once you're happy with your changes, add changed files with `git add` and

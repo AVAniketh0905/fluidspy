@@ -1,7 +1,9 @@
 import numpy as np
 
-from fluidspy.numerical.pde.finite_element_methods import finite_element_method
-from fluidspy.numerical.taylor.taylor_caller import taylor_methods
+from fluidspylib.fluidspy.numerical.pde.finite_element_methods import (
+    finite_element_method,
+)
+from fluidspylib.fluidspy.numerical.taylor.taylor_caller import taylor_methods
 
 
 def testing_one_dim_taylor():
@@ -49,5 +51,5 @@ def testing_ftcs():
 
 if __name__ == "__main__":
     # testing_one_dim_taylor()
-    # testting_twi_dim_taylor()
-    testing_ftcs()
+    testting_twi_dim_taylor()
+    # testing_ftcs()

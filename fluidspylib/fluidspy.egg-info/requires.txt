@@ -3,3 +3,6 @@ typing>=3.7
 
 [dev]
 twine>=4.0.0
+pytest
+ruff
+black
