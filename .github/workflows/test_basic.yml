@@ -31,4 +31,4 @@ jobs:
         run: ruff check fluidspylib/
 
       - name: Black Check
-        run: black --check fluidspylib/*
+        run: black --check fluidspylib/
