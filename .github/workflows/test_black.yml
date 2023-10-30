@@ -1,9 +1,13 @@
 name: Black Test
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
 
 jobs:
-  ruff:
+  black:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,8 +20,8 @@ jobs:
       - name: Install dependencies
           run: |
             python -m pip install --upgrade pip
-            pip install ruff
+            pip install black
       
-      - name: Blak Check
-        run: ruff --check fluidspylib/*
+      - name: Black Check
+        run: black --check fluidspylib/*
       
