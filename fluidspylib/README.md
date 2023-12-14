@@ -47,7 +47,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Contact
 
-AVAniketh0905 (dekomori_sanae09) -> adimoolamaniketh@gmail.com
+AVAniketh0905 (dekomori_sanae09)
 Project Link: [fluidspy](https://github.com/AVAniketh0905/fluidspy)
 
 ## Acknowledgments

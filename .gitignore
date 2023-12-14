@@ -1,4 +1,5 @@
 # virtual environment
+venv/
 env/
 
 # pypi config

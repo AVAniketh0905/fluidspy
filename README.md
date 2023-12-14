@@ -42,13 +42,36 @@ print(taylor, f"{taylor(f, x, h):.3f}")
 
 If you want to contribute to this project, see `CONTRIBUTING.md` for guidelines.
 
+### Setup
+
+1. Fork this repository.
+2. Clone the forked repository to your local machine.
+   > `git clone {repo_name}`
+3. Change the current working directory to the cloned repository.
+4. Create a virtual environment.
+   > `python -m venv venv`
+5. Activate the virtual environment.
+   - Windows
+     > `venv\Scripts\activate`
+   - Linux
+     > `source venv/bin/activate`
+6. Install the dependencies.
+   > `pip install -r requirements_dev.txt`
+7. Make the changes.
+8. Run the tests.
+   > `pytest`
+9. Commit the changes.
+10. Push the changes to your forked repository.
+11. Create a pull request.
+12. Wait for the review!!!
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
 
-AVAniketh0905 (dekomori_sanae09) -> adimoolamaniketh@gmail.com
+AVAniketh0905 (dekomori_sanae09)
 Project Link: [fluidspy](https://github.com/AVAniketh0905/fluidspy)
 
 ## Acknowledgments
