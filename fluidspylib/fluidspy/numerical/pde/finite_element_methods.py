@@ -1,7 +1,7 @@
 from typing import Callable
 
 from ..constant import METHOD
-from .explicit import Explicit
+from .fem import Explicit, Implicit
 
 
 def finite_element_method(method: METHOD, logging: bool = False) -> Callable:
