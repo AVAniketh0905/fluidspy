@@ -7,7 +7,7 @@ def test_explicit_initialization():
     explicit = finite_element_method("explicit", True)
     assert isinstance(explicit, Explicit)
     assert explicit.method == "explicit"
-    assert explicit.logging == True
+    assert explicit.logging is True
 
 
 def test_explicit_available_methods():

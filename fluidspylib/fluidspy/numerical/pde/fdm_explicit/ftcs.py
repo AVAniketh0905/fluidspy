@@ -1,5 +1,7 @@
 from typing import List
 
+import numpy as np
+
 
 def ftcs(initial_state: List[List], step: List, alpha: float) -> float:
     """
