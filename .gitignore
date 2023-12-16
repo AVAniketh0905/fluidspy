@@ -2,6 +2,9 @@
 venv/
 env/
 
+# notes
+notes.md
+
 # pypi config
 .pypirc
 

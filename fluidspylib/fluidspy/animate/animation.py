@@ -1,2 +1,0 @@
-def animate():
-    return True
