@@ -17,7 +17,7 @@ class FiniteElementMethod:
         available_methods (dict): A dictionary containing the available methods for solving the PDE.
     """
 
-    def __init__(self, method: METHOD, logging: bool) -> None:
+    def __init__(self, method: METHOD, logging: bool = False) -> None:
         self.method = method
         self.logging = logging
         self.available_methods = {}
@@ -119,9 +119,9 @@ class Explicit(FiniteElementMethod):
     Explicit finite element method for solving PDE's.
     """
 
-    def __init__(self, method: METHOD, logging: bool) -> None:
+    def __init__(self, method: METHOD = "explicit", logging: bool = False) -> None:
         super().__init__(method, logging)
-        self.available_methods = {"ftcs": ftcs, "richardson": richardson}
+        self.available_methods = {"ftcs": ftcs.ftcs, "richardson": richardson.richardson}
 
 
 class Implicit(FiniteElementMethod):
@@ -129,6 +129,6 @@ class Implicit(FiniteElementMethod):
     Implicit finite element method for solving PDE's.
     """
 
-    def __init__(self, method: METHOD) -> None:
+    def __init__(self, method: METHOD = "implicit") -> None:
         super().__init__(method)
-        self.available_methods = {"btcs": btcs}
+        self.available_methods = {"btcs": btcs.btcs}

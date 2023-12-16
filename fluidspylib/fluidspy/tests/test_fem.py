@@ -16,6 +16,6 @@ def test_explicit_available_methods():
     assert "richardson" in explicit.available_methods
 
 
-def test_Explicit_unavailable_method():
+def test_explicit_unavailable_method():
     with pytest.raises(ValueError):
         finite_element_method("unavailable_method", True)
