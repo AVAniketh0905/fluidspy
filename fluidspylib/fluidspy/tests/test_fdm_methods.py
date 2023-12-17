@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
 
-from fluidspy.numerical.pde.fem import Explicit
+from ..numerical.pde.fem import Explicit
 
 METHODS_TO_BE_TESTED = set(["ftcs", "btcs"])
 
