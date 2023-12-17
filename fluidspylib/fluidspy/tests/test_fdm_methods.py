@@ -1,6 +1,9 @@
 import os
+
 import numpy as np
-from matplotlib import animation, pyplot as plt
+from matplotlib import animation
+from matplotlib import pyplot as plt
+
 from fluidspy.numerical.pde.fem import Explicit
 
 METHODS_TO_BE_TESTED = set(["ftcs", "btcs"])
@@ -19,7 +22,11 @@ def animate_solution(method, states_matrix):
         return (scat,)
 
     ani = animation.FuncAnimation(fig, update, frames=len(states_matrix), interval=100, repeat=False)
-    ani.save(f"fluidspylib/fluidspy/tests/validations/{method}.gif", writer="pillow", fps=1000)
+    ani.save(
+        f"fluidspylib/fluidspy/tests/validations/{method}.gif",
+        writer="pillow",
+        fps=1000,
+    )
 
 
 def run_method_to_be_checked(method):

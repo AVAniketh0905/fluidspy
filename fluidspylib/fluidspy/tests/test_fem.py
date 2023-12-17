@@ -1,5 +1,7 @@
 import pytest
-from ..numerical.pde.fem import Explicit, finite_element_method
+
+from ..numerical.pde.fem import Explicit
+from ..numerical.pde.fem import finite_element_method
 
 
 def test_explicit_initialization():

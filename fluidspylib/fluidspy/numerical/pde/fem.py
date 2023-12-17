@@ -4,7 +4,8 @@ from typing import List
 import numpy as np
 
 from ..constant import METHOD
-from .fdm_explicit import ftcs, richardson
+from .fdm_explicit import ftcs
+from .fdm_explicit import richardson
 from .fdm_implicit import btcs
 
 
@@ -121,7 +122,10 @@ class Explicit(FiniteElementMethod):
 
     def __init__(self, method: METHOD = "explicit", logging: bool = False) -> None:
         super().__init__(method, logging)
-        self.available_methods = {"ftcs": ftcs.ftcs, "richardson": richardson.richardson}
+        self.available_methods = {
+            "ftcs": ftcs.ftcs,
+            "richardson": richardson.richardson,
+        }
 
 
 class Implicit(FiniteElementMethod):
