@@ -52,6 +52,7 @@ exclude = [
     "dist",
     "node_modules",
     "env",
+    "venv",
 ]
 
 # Assume Python 3.10
