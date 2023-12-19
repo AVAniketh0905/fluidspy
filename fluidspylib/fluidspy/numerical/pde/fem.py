@@ -70,32 +70,54 @@ class FiniteElementMethod:
         states_matrix = [initial_state]
 
         for j in range(num_steps):
-            new_state = [initial_state[0]]
-
-            for i in range(1, len(initial_state) - 1):
-                try:
-                    state = [
-                        initial_state[i - 1],
-                        initial_state[i],
-                        initial_state[i + 1],
-                    ]
-                    new_state.append(method(state, step, alpha))
-                except Exception as e:
-                    print(f"Error at {i+1}th index in {j+1}th time step. {e}")
-                    return
-            new_state.append(initial_state[-1])
+            curr_state = self.single_time_step(initial_state, method, step, alpha)
 
             if self.logging:
-                print(f"The solution at {j+1}th iteration is {new_state}")
-            states_matrix.append(new_state)
+                print(
+                    f"The solution at {j+1}th iteration is {np.array(curr_state).shape}"
+                )
+            states_matrix.append(curr_state)
 
             if self.early_stopping(states_matrix, threshold):
                 print(f"Early stopping at {j+1}th iteration!")
                 return states_matrix
 
-            initial_state = new_state
+            initial_state = curr_state
 
         return states_matrix
+
+    def single_time_step(self, initial_state, method, step, alpha):
+        new_state = [initial_state[0]]
+        # new_state = list()
+
+        for i in range(1, len(initial_state) - 1):
+            # if i == 0:
+            #     state = [initial_state[i], initial_state[i + 1]]
+            # elif i == len(initial_state) - 1:
+            #     state = [initial_state[i - 1], initial_state[i]]
+            # else:
+            #     state = [
+            #         initial_state[i - 1],
+            #         initial_state[i],
+            #         initial_state[i + 1],
+            #     ]
+            state = [
+                initial_state[i - 1],
+                initial_state[i],
+                initial_state[i + 1],
+            ]
+
+            try:
+                new_state.append(method(state, step, alpha))
+            except IndexError as e:
+                print(f"IndexError at {i+1}th index. {e}")
+                return
+            except ValueError as e:
+                print(f"ValueError at {i+1}th index. {e}")
+                return
+        new_state.append(initial_state[-1])
+
+        return new_state
 
     def early_stopping(self, states_matrix: List[List], threshold: float) -> bool:
         """
