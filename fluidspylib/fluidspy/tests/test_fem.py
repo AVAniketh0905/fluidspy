@@ -1,20 +1,23 @@
 import pytest
 
+from ..numerical.boundary.conditions import BC
 from ..numerical.pde.fem import Explicit
 from ..numerical.pde.fem import finite_element_method
 
+bc = BC("constant", 6, -6)
+
 
 def test_explicit_initialization():
-    explicit = finite_element_method("explicit", True)
+    explicit = finite_element_method("explicit", bc, True)
     assert isinstance(explicit, Explicit)
     assert explicit.method == "explicit"
     assert explicit.logging is True
 
 
 def test_explicit_available_methods():
-    explicit = finite_element_method("explicit", True)
-    assert "ftcs" in explicit.available_methods
-    assert "richardson" in explicit.available_methods
+    explicit = finite_element_method("explicit", bc, True)
+    assert "ftcs" in explicit._available_methods
+    assert "richardson" in explicit._available_methods
 
 
 def test_explicit_unavailable_method():

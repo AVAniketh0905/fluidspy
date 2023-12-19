@@ -4,7 +4,8 @@ import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
 
-from ..numerical.pde.fem import Explicit
+from fluidspy.numerical.boundary.conditions import BC
+from fluidspy.numerical.pde.fem import finite_element_method
 
 METHODS_TO_BE_TESTED = set(["ftcs", "btcs"])
 
@@ -36,7 +37,8 @@ def animate_solution(method, states_matrix):
 
 
 def run_method_to_be_checked(method):
-    explicit = Explicit(logging=False)
+    bc = BC("insulated")
+    explicit = finite_element_method("explicit", bc, logging=False)
     initial_state = [6, 5, 5, -5, -6]
 
     delta_t, delta_x = 0.01, 0.01
