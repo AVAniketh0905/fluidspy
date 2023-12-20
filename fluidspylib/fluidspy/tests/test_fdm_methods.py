@@ -4,8 +4,8 @@ import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
 
-from fluidspy.numerical.boundary.conditions import BoundaryCondition as BC
-from fluidspy.numerical.pde.fem import finite_element_method
+from ..numerical.boundary.conditions import BoundaryCondition as BC
+from ..numerical.pde.fem import finite_element_method
 
 METHODS_TO_BE_TESTED = set(["ftcs", "btcs"])
 
