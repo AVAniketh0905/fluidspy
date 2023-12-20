@@ -3,7 +3,7 @@ from typing import List
 
 import numpy as np
 
-from ..boundary.conditions import BC
+from ..boundary.conditions import BoundaryCondition as BC
 from ..constant import METHOD
 from .fdm_explicit import ftcs
 from .fdm_explicit import richardson
@@ -19,9 +19,9 @@ class FiniteElementMethod:
         available_methods (dict): A dictionary containing the available methods for solving the PDE.
     """
 
-    def __init__(self, method: METHOD, bc: BC, logging: bool = False) -> None:
+    def __init__(self, method: METHOD, bcs: List[BC], logging: bool = False) -> None:
         self.method = method
-        self._bc = bc
+        self._bcs = bcs
         self.logging = logging
         self._available_methods = {}
 
@@ -81,7 +81,8 @@ class FiniteElementMethod:
                 print(f"ValueError at {j+1}th iteration. {e}")
                 return
 
-            new_state = self._bc.apply(new_state, initial_state[0], initial_state[-1])
+            for bc__ in self._bcs:
+                new_state = bc__.apply(new_state, initial_state[0], initial_state[-1])
 
             if self.logging and j % (num_steps * 0.1) == 0:
                 print(f"The solution at {j+1}th iteration is {new_state}")
@@ -150,7 +151,7 @@ class Explicit(FiniteElementMethod):
     """
 
     def __init__(
-        self, bc: BC, method: METHOD = "explicit", logging: bool = False
+        self, bc: List[BC], method: METHOD = "explicit", logging: bool = False
     ) -> None:
         super().__init__(method, bc, logging)
         self._available_methods = {
@@ -165,19 +166,22 @@ class Implicit(FiniteElementMethod):
     """
 
     def __init__(
-        self, bc: BC, method: METHOD = "implicit", logging: bool = "False"
+        self, bc: List[BC], method: METHOD = "implicit", logging: bool = "False"
     ) -> None:
         super().__init__(method, bc, logging)
         self._available_methods = {"btcs": btcs.btcs}
 
 
-def finite_element_method(method: METHOD, bc: BC, logging: bool = False) -> Callable:
+def finite_element_method(
+    method: METHOD, bc: List[BC], logging: bool = False
+) -> Callable:
     """
     Returns the finite element method based on the method.
 
     Args:
         method (METHOD): The method used for solving the PDE.
     """
+
     if method == "explicit":
         return Explicit(bc, method, logging)
     elif method == "implicit":

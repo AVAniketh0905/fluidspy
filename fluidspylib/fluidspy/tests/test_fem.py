@@ -1,10 +1,10 @@
 import pytest
 
-from ..numerical.boundary.conditions import BC
+from ..numerical.boundary.conditions import BoundaryCondition as BC
 from ..numerical.pde.fem import Explicit
 from ..numerical.pde.fem import finite_element_method
 
-bc = BC("constant", 6, -6)
+bc = [BC("constant", ["left", "right"])]
 
 
 def test_explicit_initialization():

@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import animation
 from matplotlib import pyplot as plt
 
-from fluidspy.numerical.boundary.conditions import BC
+from fluidspy.numerical.boundary.conditions import BoundaryCondition as BC
 from fluidspy.numerical.pde.fem import finite_element_method
 
 METHODS_TO_BE_TESTED = set(["ftcs", "btcs"])
@@ -32,18 +32,18 @@ def animate_solution(method, states_matrix):
     ani.save(
         f"fluidspylib/fluidspy/tests/validations/{method}.gif",
         writer="pillow",
-        fps=1000,
+        fps=10000,
     )
 
 
 def run_method_to_be_checked(method):
-    bc = BC("insulated")
+    bc = [BC("insulated", ["left"]), BC("constant", ["right"])]
     explicit = finite_element_method("explicit", bc, logging=False)
     initial_state = [6, 5, 5, -5, -6]
 
     delta_t, delta_x = 0.01, 0.01
     step = [delta_t, delta_x]
-    alpha, num_steps = 33e-6, 1000
+    alpha, num_steps = 33e-6, 5000
     solution = explicit(method, num_steps, initial_state, step, alpha)
     print(solution[-1])
     animate_solution(method, solution)
