@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Gh Test](https://github.com/AVAniketh0905/fluidspy/actions/workflows/test_basic.yml/badge.svg)
 
-Your `fluidspy` is a Python library for Computational Fluid Dynamics (CFD) simulations.
+`fluidspy` is a Python library for Computational Fluid Dynamics (CFD) simulations.
 
 ## Features
 
