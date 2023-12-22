@@ -7,7 +7,7 @@ Your `fluidspy` is a Python library for Computational Fluid Dynamics (CFD) simul
 
 ## Features
 
-- Most famous algorithms implemented in python.
+- Most famous cfd algorithms implemented in python.
 - Animations coming soon!
 
 ## Installation
