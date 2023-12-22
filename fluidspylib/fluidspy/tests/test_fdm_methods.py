@@ -43,7 +43,7 @@ def run_method_to_be_checked(method):
 
     delta_t, delta_x = 0.01, 0.01
     step = [delta_t, delta_x]
-    alpha, num_steps = 33e-6, 5000
+    alpha, num_steps = 33e-6, 100
     solution = explicit(method, num_steps, initial_state, step, alpha)
     print(solution[-1])
     animate_solution(method, solution)
