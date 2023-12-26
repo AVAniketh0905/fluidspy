@@ -48,22 +48,27 @@ If you want to contribute to this project, see `CONTRIBUTING.md` for guidelines.
 2. Clone the forked repository to your local machine.
    > `git clone {repo_name}`
 3. Change the current working directory to the cloned repository.
-4. Create a virtual environment.
+4. Add the upstream reference. This will add the original repository as reference.
+   > `git remote add upstream git@github.com:AVAniketh0905/fluidspy.git`
+   - Note
+     - Everytime you boot up/push please run the following command to stay up-to date with the original repo.
+         > `git pull upstream main`
+5. Create a virtual environment.
    > `python -m venv venv`
-5. Activate the virtual environment.
+6. Activate the virtual environment.
    - Windows
      > `venv\Scripts\activate`
    - Linux
      > `source venv/bin/activate`
-6. Install the dependencies.
+7. Install the dependencies.
    > `pip install -r requirements_dev.txt`
-7. Make the changes.
-8. Run the tests.
+8. Make the changes.
+9. Run the tests.
    > `pytest`
-9. Commit the changes.
-10. Push the changes to your forked repository.
-11. Create a pull request.
-12. Wait for the review!!!
+10. Commit the changes.
+11. Push the changes to your forked repository.
+12. Create a pull request.
+13. Wait for the review!!!
 
 ## License
 
