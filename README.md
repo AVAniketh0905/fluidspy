@@ -1,5 +1,4 @@
 # fluidspy
-# Arhan
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Gh Test](https://github.com/AVAniketh0905/fluidspy/actions/workflows/test_basic.yml/badge.svg)
@@ -34,7 +33,7 @@ print(taylor, f"{taylor(f, x, h):.3f}")
 taylor = taylor_methods("central", "second", "one")
 print(taylor, f"{taylor(f, x, h):.3f}")
 
-## Outputs
+## Output
 # Calling from FirstOrder with central difference with a function of one dimension. 1.000
 # Calling from FirstOrder with central difference with a function of one dimension. 0.500
 ```
@@ -66,14 +65,14 @@ If you want to contribute to this project, see `CONTRIBUTING.md` for guidelines.
 8. Make the changes.
 9. Run the tests.
    > `pytest`
-10. Commit the changes.
+10. Commit the changes!!.
 11. Push the changes to your forked repository.
 12. Create a pull request.
 13. Wait for the review!!!
 
 ## License
 
-This project is licensed under the MIT License. See the *LICENSE* file for details.
+This project is licensed under the MIT License. See the LICENSE.txt file for details.
 
 ## Contact
 
@@ -82,4 +81,4 @@ Project Link: [fluidspy](https://github.com/AVAniketh0905/fluidspy)
 
 ## Acknowledgments
 
-`Manim` has inspired me a lot!!!
+`Manim` has inspired me a lot!
