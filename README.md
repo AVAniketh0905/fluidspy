@@ -72,7 +72,7 @@ If you want to contribute to this project, see `CONTRIBUTING.md` for guidelines.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the *LICENSE* file for details.
 
 ## Contact
 
