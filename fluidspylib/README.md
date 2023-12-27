@@ -17,7 +17,7 @@ You can install `fluidspy` using pip:
 pip install fluidspy
 ```
 
-## Usage
+## usage
 
 ```python
 import numpy as np
