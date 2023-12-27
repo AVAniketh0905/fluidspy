@@ -105,4 +105,4 @@ This Code of Conduct is licensed under the [Creative Commons Attribution-ShareAl
 
 ## Attributions
 
-This Code of Conduct was forked from the code of conduct from the [Python Software Foundation](https://www.python.org/psf/conduct/) and adapted by fluidspy Community.
+This Code of Conduct was forked from the code of conduct from the [Python Software Foundation](https://www.python.org/psf/conduct/) and adapted by fluidspy Community .
