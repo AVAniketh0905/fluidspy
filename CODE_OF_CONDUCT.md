@@ -103,6 +103,10 @@ When discussing a change to the fluidspy Community code of conduct or enforcemen
 
 This Code of Conduct is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-sa/3.0/).
 
+
+
 ## Attributions
 
 This Code of Conduct was forked from the code of conduct from the [Python Software Foundation](https://www.python.org/psf/conduct/) and adapted by fluidspy Community .
+
+<!-- changes -->
