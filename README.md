@@ -1,4 +1,5 @@
 # fluidspy
+# Arhan
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Gh Test](https://github.com/AVAniketh0905/fluidspy/actions/workflows/test_basic.yml/badge.svg)
