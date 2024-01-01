@@ -16,11 +16,10 @@ notes.md
 build/*
 dist/*
 
-__pycache__/
-
 # common ignore
 .Python
 build/
+__pycache__/
 develop-eggs/
 downloads/
 eggs/
