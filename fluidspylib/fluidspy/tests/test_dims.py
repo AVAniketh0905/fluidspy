@@ -7,6 +7,7 @@ def test_one_dim_spatial():
     one_dim = OneDimSpatial()
     one_dim.create_grid(10)
     assert one_dim.initial_conditions.shape == (10,)
+    assert one_dim.get_dimension() == 1
 
 
 def test_two_dim_spatial():
@@ -15,6 +16,7 @@ def test_two_dim_spatial():
 
     # Check that the shape is correct
     assert two_dim.initial_conditions.shape == (10, 10)
+    assert two_dim.get_dimension() == 2
 
     # Check that the base value is set correctly
     assert two_dim.initial_conditions[0][0] == 1.0

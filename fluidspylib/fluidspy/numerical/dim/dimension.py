@@ -7,16 +7,13 @@ from typing import Union
 
 import numpy as np
 
+from ..boundary.conditions import BoundaryCondition
+
 
 class Dimension(ABC):
     """Abstract class for dimensions."""
 
-    initial_conditions: Any = None
-
-    @abstractmethod
-    def validate(self):
-        """Validate initial conditions."""
-        pass
+    initial_conditions: np.ndarray = None
 
     @abstractmethod
     def create_grid(
@@ -24,6 +21,9 @@ class Dimension(ABC):
     ):
         self.initial_conditions = np.zeros(num_points, dtype=float)
         self.initial_conditions.fill(base_value)
+
+    def get_dimension(self):
+        return self.initial_conditions.ndim
 
 
 class OneDimSpatial(Dimension):
@@ -34,10 +34,6 @@ class OneDimSpatial(Dimension):
     """
 
     initial_conditions: List[float] = None
-
-    @staticmethod
-    def validate(initial_conditions: List[float]):
-        return len(initial_conditions) == 1
 
     def create_grid(self, num_points: int, base_value: float = 0.0):
         """Create a grid of num_points points with base_value(or 0).
@@ -61,18 +57,14 @@ class TwoDimSpatial(Dimension):
 
     initial_conditions: List[List[float]] = None
 
-    @staticmethod
-    def validate(initial_conditions: List[List[float]]):
-        return len(initial_conditions) == 2
-
     def create_grid(self, num_points: Tuple[int, int], base_value: float = 0.0):
-        """Create a grid of n_x * n_y points with base_value.
+        """Create a grid of i * j points with base_value.
 
         Args:
             num_points (Tuple[int, int]): Number of points in each dimension.
             base_value (float): Base value for the grid. Defaults to 0.0.
 
         Returns:
-            np.ndarray: Grid of n_x * n_y points with base_value. (2D)
+            np.ndarray: Grid of i * j points with base_value. (2D)
         """
         super().create_grid(num_points, base_value)
