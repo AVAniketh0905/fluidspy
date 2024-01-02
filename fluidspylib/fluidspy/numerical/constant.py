@@ -37,9 +37,9 @@ class DIM(Enum):
         Enum (str): The enumeration class.
     """
 
-    ONE = "one"
-    TWO = "two"
-    THREE = "three"
+    ONE = 1
+    TWO = 2
+    THREE = 3
 
 
 class METHOD(Enum):
