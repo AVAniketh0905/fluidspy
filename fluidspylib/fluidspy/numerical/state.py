@@ -1,17 +1,18 @@
 from dataclasses import dataclass
+from types import NoneType
 
 import numpy as np
 
 
-@dataclass(frozen=True, order=True)
+@dataclass
 class SimulationState:
-    state: np.ndarray = None
+    state: np.ndarray | NoneType = None
 
-    def set_state(self, state: np.ndarray):
-        self.state = state
-
-    def get_state(self):
+    def get_state(self) -> np.ndarray:
         return self.state
+
+    def set_state(self, value: np.ndarray):
+        self.state = value
 
     def get_dimension(self):
         return self.state.ndim

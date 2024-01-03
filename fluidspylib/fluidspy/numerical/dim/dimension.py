@@ -14,12 +14,16 @@ class Dimension(ABC):
 
     initial_conditions: SimulationState
 
+    def __init__(self, initial_conditions: SimulationState) -> None:
+        self.initial_conditions = initial_conditions
+
     @abstractmethod
     def create_grid(
         self, num_points: Union[int, Tuple[int, int]], base_value: float = 0.0
     ):
         init_state = np.zeros(num_points, dtype=float)
-        self.initial_conditions.set_state(init_state.fill(base_value))
+        init_state.fill(base_value)
+        self.initial_conditions.set_state(init_state)
 
 
 class OneDimSpatial(Dimension):
