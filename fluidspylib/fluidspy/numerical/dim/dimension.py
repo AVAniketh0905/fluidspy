@@ -1,29 +1,25 @@
 from abc import ABC
 from abc import abstractmethod
-from typing import Any
 from typing import List
 from typing import Tuple
 from typing import Union
 
 import numpy as np
 
-from ..boundary.conditions import BoundaryCondition
+from ..state import SimulationState
 
 
 class Dimension(ABC):
     """Abstract class for dimensions."""
 
-    initial_conditions: np.ndarray = None
+    initial_conditions: SimulationState
 
     @abstractmethod
     def create_grid(
         self, num_points: Union[int, Tuple[int, int]], base_value: float = 0.0
     ):
-        self.initial_conditions = np.zeros(num_points, dtype=float)
-        self.initial_conditions.fill(base_value)
-
-    def get_dimension(self):
-        return self.initial_conditions.ndim
+        init_state = np.zeros(num_points, dtype=float)
+        self.initial_conditions.set_state(init_state.fill(base_value))
 
 
 class OneDimSpatial(Dimension):

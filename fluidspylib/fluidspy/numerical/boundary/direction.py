@@ -3,25 +3,27 @@ from abc import abstractmethod
 
 import numpy as np
 
-from ..dim.dimension import Dimension
+from ..state import SimulationState
 from .conditions import BoundaryCondition
 
 
 class Direction(ABC):
     """Abstract class for directions."""
 
-    initial_value: float = None
     axis: int
+    initial_value: float = None
     boundary_condition: BoundaryCondition = None
 
     def __init__(
         self,
-        dim: Dimension,
         initial_value: float,
+        state: SimulationState,
         boundary_condition: BoundaryCondition,
     ):
-        self.axis = 0 if dim.get_dimension() == 1 else 1
+        self.axis = 0 if state.get_dimension() == 1 else 1
+
         self.initial_value = initial_value
+        self.state = state
         self.boundary_condition = boundary_condition
 
     @abstractmethod
@@ -29,9 +31,9 @@ class Direction(ABC):
         """Get appropriate cells."""
         pass
 
-    def apply(self, state: np.ndarray):
+    def apply(self):
         """Apply boundary conditions."""
-        curr_cells, adjacent_cells = self.get_cells(state)
+        curr_cells, adjacent_cells = self.get_cells(self.state.get_state())
         self.boundary_condition.apply(self.initial_value, curr_cells, adjacent_cells)
 
 
@@ -58,12 +60,12 @@ class Top(Direction):
 
     def __init__(
         self,
-        dim: Dimension,
         initial_value: float,
+        state: SimulationState,
         boundary_condition: BoundaryCondition,
     ):
-        super().__init__(dim, initial_value, boundary_condition)
-        if dim.get_dimension() == 1:
+        super().__init__(state, initial_value, boundary_condition)
+        if self.state.get_dimension() == 1:
             raise ValueError("Top direction is not available for 1D.")
 
     def get_cells(self, state: np.ndarray):
@@ -77,12 +79,12 @@ class Bottom(Direction):
 
     def __init__(
         self,
-        dim: Dimension,
         initial_value: float,
+        state: SimulationState,
         boundary_condition: BoundaryCondition,
     ):
-        super().__init__(dim, initial_value, boundary_condition)
-        if dim.get_dimension() == 1:
+        super().__init__(state, initial_value, boundary_condition)
+        if self.state.get_dimension() == 1:
             raise ValueError("Bottom direction is not available for 1D.")
 
     def get_cells(self, state: np.ndarray):
