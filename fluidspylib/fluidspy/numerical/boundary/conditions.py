@@ -39,10 +39,6 @@ class Insulated(BoundaryCondition):
     def apply(
         self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
     ):
-        if state.dtype != np.dtype("float64"):
-            for i in range(len(state)):
-                state[i] = adjacent_states[i]
-        else:
-            state = adjacent_states
+        state = np.copy(adjacent_states)
 
         return state
