@@ -53,9 +53,13 @@ class Direction(ABC):
     def apply(self):
         """Apply boundary conditions."""
         cells, cell_indices, adjacent_cells = self.get_cells()
+        # print(
+        #     "cells, cell_indices, adjacent_cells", cells, cell_indices, adjacent_cells
+        # )
         new_cells = self.boundary_condition.apply(
             self.initial_value, cells, adjacent_cells
         )
+        # print("new_cells", new_cells)
         self.put_along_direction(cell_indices, new_cells)
 
 

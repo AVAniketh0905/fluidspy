@@ -31,6 +31,7 @@ class Constant(BoundaryCondition):
         self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
     ):
         super().init_apply(initial_value, state)
+        return state
 
 
 class Insulated(BoundaryCondition):
