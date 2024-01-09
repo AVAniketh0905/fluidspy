@@ -1,35 +1,48 @@
-from typing import List
-from typing import Set
+from abc import ABC
+from abc import abstractmethod
 
-from ..constant import BC
-from ..constant import DIRS
+import numpy as np
 
 
-class BoundaryCondition:
-    def __init__(self, type: BC, dirs: Set[DIRS]):
-        self.type = type
-        self.dirs = dirs
+class BoundaryCondition(ABC):
+    """Abstract class for boundary conditions."""
 
-    def apply(self, state: List[List], *args):
-        if self.type == "constant":
-            return self.constant(state, *args)
-        elif self.type == "insulated":
-            return self.insulated(state)
+    def init_apply(self, initial_value: float, state: np.ndarray):
+        """Apply boundary conditions."""
+        if isinstance(initial_value, float):
+            state = initial_value
         else:
-            raise ValueError(f"Unknown boundary condition type: {self.type}")
-
-    def constant(self, state: List[List], *args):
-        if "left" in self.dirs:
-            state[0] = args[0]
-        if "right" in self.dirs:
-            state[-1] = args[-1]
+            state = np.full_like(state, initial_value, dtype=np.float64)
 
         return state
 
-    def insulated(self, state):
-        if "left" in self.dirs:
-            state[0] = state[1]
-        if "right" in self.dirs:
-            state[-1] = state[-2]
+    @abstractmethod
+    def apply(
+        self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
+    ):
+        """Apply boundary conditions."""
+        pass
 
+
+class Constant(BoundaryCondition):
+    """Constant boundary condition."""
+
+    def apply(
+        self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
+    ):
+        if isinstance(initial_value, float):
+            state = initial_value
+        else:
+            state = np.full_like(state, initial_value, dtype=np.float64)
+
+        return state
+
+
+class Insulated(BoundaryCondition):
+    """Insulated boundary condition."""
+
+    def apply(
+        self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
+    ):
+        state = np.copy(adjacent_states)
         return state
