@@ -31,12 +31,18 @@ class Direction(ABC):
         """Get appropriate cells."""
         pass
 
+    @abstractmethod
+    def get_new_cells(self, cells, adjacent_cells):
+        """Get appropriate cells."""
+        pass
+
     def put_along_direction(
         self,
         cell_indices: np.ndarray,
         new_cells: np.ndarray,
     ):
         new_state = self.state.get_state()
+        # print("cell_indices, new_cells", cell_indices, new_cells)
         np.put_along_axis(
             new_state,
             cell_indices,
@@ -54,11 +60,13 @@ class Direction(ABC):
         """Apply boundary conditions."""
         cells, cell_indices, adjacent_cells = self.get_cells()
         # print(
-        #     "cells, cell_indices, adjacent_cells", cells, cell_indices, adjacent_cells
+        #     "cells, cell_indices, adjacent_cells, initial_value",
+        #     cells,
+        #     cell_indices,
+        #     adjacent_cells,
+        #     self.initial_value,
         # )
-        new_cells = self.boundary_condition.apply(
-            self.initial_value, cells, adjacent_cells
-        )
+        new_cells = self.get_new_cells(cells, adjacent_cells)
         # print("new_cells", new_cells)
         self.put_along_direction(cell_indices, new_cells)
 
@@ -88,6 +96,13 @@ class Left(Direction):
 
         return left_cells, left_cells_indices, adjacent_cells
 
+    def get_new_cells(self, cells, adjacent_cells):
+        new_cells = self.boundary_condition.apply(
+            self.initial_value, cells, adjacent_cells
+        )
+
+        return [[new_cell] for new_cell in new_cells] if self.axis == 1 else [new_cells]
+
 
 class Right(Direction):
     """Right direction."""
@@ -112,6 +127,13 @@ class Right(Direction):
         right_cells_indices = self.get_cell_indices()
         adjacent_cells = np.take(self.state.get_state(), -2, axis=self.axis)
         return right_cells, right_cells_indices, adjacent_cells
+
+    def get_new_cells(self, cells, adjacent_cells):
+        new_cells = self.boundary_condition.apply(
+            self.initial_value, cells, adjacent_cells
+        )
+
+        return [[new_cell] for new_cell in new_cells] if self.axis == 1 else [new_cells]
 
 
 class Top(Direction):
@@ -138,6 +160,9 @@ class Top(Direction):
         adjacent_cells = np.take(self.state.get_state(), 1, axis=self.axis)
         return top_cells, top_cells_indices, adjacent_cells
 
+    def get_new_cells(self, cells, adjacent_cells):
+        return self.boundary_condition.apply(self.initial_value, cells, adjacent_cells)
+
 
 class Bottom(Direction):
     """Bottom direction."""
@@ -162,3 +187,6 @@ class Bottom(Direction):
         bottom_cells_indices = self.get_cell_indices()
         adjacent_cells = np.take(self.state.get_state(), -2, axis=self.axis)
         return bottom_cells, bottom_cells_indices, adjacent_cells
+
+    def get_new_cells(self, cells, adjacent_cells):
+        return self.boundary_condition.apply(self.initial_value, cells, adjacent_cells)

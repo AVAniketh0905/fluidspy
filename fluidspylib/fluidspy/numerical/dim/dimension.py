@@ -5,6 +5,8 @@ from typing import Tuple
 from typing import Union
 
 import numpy as np
+from scipy.signal import convolve
+from scipy.signal import convolve2d
 
 from ..state import SimulationState
 
@@ -24,6 +26,10 @@ class Dimension(ABC):
         init_state = np.zeros(num_points, dtype=float)
         init_state.fill(base_value)
         self.initial_conditions.set_state(init_state)
+
+    @abstractmethod
+    def convolution():
+        pass
 
 
 class OneDimSpatial(Dimension):
@@ -47,6 +53,18 @@ class OneDimSpatial(Dimension):
         """
         super().create_grid(num_points, base_value)
 
+    @staticmethod
+    def convolution(
+        state_matrix: np.ndarray,
+        parametric_matrix: np.ndarray,
+        mode="same",
+    ):
+        return convolve(
+            state_matrix,
+            parametric_matrix,
+            mode=mode,
+        )
+
 
 class TwoDimSpatial(Dimension):
     """Two dimensional spatial dimension.
@@ -68,3 +86,18 @@ class TwoDimSpatial(Dimension):
             np.ndarray: Grid of i * j points with base_value. (2D)
         """
         super().create_grid(num_points, base_value)
+
+    @staticmethod
+    def convolution(
+        state_matrix: np.ndarray,
+        parametric_matrix: np.ndarray,
+        mode="same",
+        boundary="wrap",
+    ):
+        return convolve2d(
+            state_matrix,
+            parametric_matrix,
+            mode=mode,
+            boundary=boundary,
+            fillvalue=0,
+        )

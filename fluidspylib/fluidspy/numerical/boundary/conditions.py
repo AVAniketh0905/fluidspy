@@ -30,7 +30,11 @@ class Constant(BoundaryCondition):
     def apply(
         self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
     ):
-        super().init_apply(initial_value, state)
+        if isinstance(initial_value, float):
+            state = initial_value
+        else:
+            state = np.full_like(state, initial_value, dtype=np.float64)
+
         return state
 
 
@@ -41,5 +45,4 @@ class Insulated(BoundaryCondition):
         self, initial_value: float, state: np.ndarray, adjacent_states: np.ndarray
     ):
         state = np.copy(adjacent_states)
-
         return state
