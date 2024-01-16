@@ -16,3 +16,6 @@ class SimulationState:
 
     def get_dimension(self):
         return self.state.ndim
+
+    def __len__(self):
+        return len(self.state)

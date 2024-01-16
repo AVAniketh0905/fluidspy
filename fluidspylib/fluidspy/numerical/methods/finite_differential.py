@@ -75,7 +75,7 @@ class FiniteDifferentialMethod(ABC):
         for i in range(num_iterations):
             # print("Running start:iter", i)
             states.append(self.solve())
-            print("state {}\n".format(i + 1), states[-1])
+            # print("state {}\n".format(i + 1), states[-1])
             # print("Running end:iter", i)
             # print()
 
@@ -112,7 +112,7 @@ class FTCS(FiniteDifferentialMethod):
 
     def get_parametric(self):
         if self.state.get_dimension() == 1:
-            return np.array([self.F_o.x, 1 - 2 * self.F_o.x, self.F_o.x])
+            return np.array([self.F_o.x, -2 * self.F_o.x, self.F_o.x])
 
         return np.array(
             [
