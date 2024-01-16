@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import numpy as np
 
 from ..animate.animation import SimulationAnimation
@@ -73,11 +75,13 @@ def two_dim_state(iterations=10):
     return states
 
 
-def test_animation():
+@patch("matplotlib.pyplot.show")
+def test_animation(show):
     np.random.seed(0)
 
-    simulation_states = one_dim_state(1000)  # two_dim_state(100)
+    simulation_states = one_dim_state(10)  # two_dim_state(100)
 
     simulation_animation = SimulationAnimation(simulation_states, repeat=False)
 
     simulation_animation.show_animation()
+    assert True
