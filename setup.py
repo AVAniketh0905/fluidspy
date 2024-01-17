@@ -21,10 +21,10 @@ setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        "numpy>=1.24",
+        "numpy>=1.24.0",
         "typing>=3.7",
         "scipy>=1.11.4",
-        "matplotlib==3.8.2",
+        "matplotlib>=3.8.2",
     ],
     extras_require={
         "dev": ["twine>=4.0.0", "pytest", "ruff", "black"],
