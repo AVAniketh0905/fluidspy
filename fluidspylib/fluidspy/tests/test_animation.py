@@ -13,7 +13,7 @@ from ..numerical.boundary import Top
 from ..numerical.dim.dimension import OneDimSpatial
 from ..numerical.dim.dimension import TwoDimSpatial
 from ..numerical.material_properties import ThermalProperties
-from ..numerical.methods.finite_differential import FTCS
+from ..numerical.methods.fdm import FTCS
 from ..numerical.state import SimulationState
 from ..numerical.step import Step
 from ..numerical.step import Vector
