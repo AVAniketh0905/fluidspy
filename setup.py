@@ -6,7 +6,7 @@ with open("fluidspylib/README.md", "r") as f:
 
 setup(
     name="fluidspy",
-    version="0.0.5",
+    version="1.0.0",
     description="Implementation of CFD methods in Python",
     package_dir={"": "fluidspylib"},
     packages=find_packages(where="fluidspylib"),
@@ -20,7 +20,12 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],
-    install_requires=["numpy>=1.24", "typing>=3.7"],
+    install_requires=[
+        "numpy>=1.24",
+        "typing>=3.7",
+        "scipy>=1.11.4",
+        "matplotlib==3.8.2",
+    ],
     extras_require={
         "dev": ["twine>=4.0.0", "pytest", "ruff", "black"],
     },

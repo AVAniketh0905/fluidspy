@@ -7,7 +7,8 @@ Your `fluidspy` is a Python library for Computational Fluid Dynamics (CFD) simul
 ## Features
 
 - Most famous algorithms implemented in python.
-- Animations coming soon!
+- Animations included!
+- Easy to use!
 
 ## Installation
 
@@ -20,21 +21,11 @@ pip install fluidspy
 ## Usage
 
 ```python
-import numpy as np
-from fluidspy import taylor_methods
+import fluidspy
 
-f = lambda x: x**2 / 4
-x, h = 2.0, 0.1
+fluidspy.standard.one_dim_constant_heat_transfer()
 
-taylor = taylor_methods("central", "first", "one")
-print(taylor, f"{taylor(f, x, h):.3f}")
-
-taylor = taylor_methods("central", "second", "one")
-print(taylor, f"{taylor(f, x, h):.3f}")
-
-## Outputs
-# Calling from FirstOrder with central difference with a function of one dimension. 1.000
-# Calling from FirstOrder with central difference with a function of one dimension. 0.500
+# Should ouput a matplotlib animation.
 ```
 
 ## Contributing
