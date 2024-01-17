@@ -6,7 +6,7 @@ with open("fluidspylib/README.md", "r") as f:
 
 setup(
     name="fluidspy",
-    version="1.0.0",
+    version="1.0.1",
     description="Implementation of CFD methods in Python",
     package_dir={"": "fluidspylib"},
     packages=find_packages(where="fluidspylib"),
