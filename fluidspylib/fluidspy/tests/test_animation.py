@@ -87,14 +87,14 @@ def test_animation(show):
     assert True
 
 
-def animation():
-    np.random.seed(0)
+# def animation():
+#     np.random.seed(0)
 
-    simulation_states = two_dim_state(10)
+#     simulation_states = two_dim_state(10)
 
-    simulation_animation = SimulationAnimation(simulation_states, repeat=False)
-    simulation_animation.set_title("2D Heat Diffusion")
-    simulation_animation.show_animation()
+#     simulation_animation = SimulationAnimation(simulation_states, repeat=False)
+#     simulation_animation.set_title("2D Heat Diffusion")
+#     simulation_animation.show_animation()
 
 
-animation()
+# animation()
