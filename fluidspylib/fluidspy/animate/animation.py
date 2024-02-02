@@ -17,11 +17,15 @@ class SliderHandler:
 
 
 class PlottingHandler:
-    def __init__(self, states):
+    def __init__(self, states, fig=None, axes=None):
         self.states = states
         self.num_frames = len(states)
 
-        self.fig, self.axes = plt.subplots()
+        if fig is None and axes is None:
+            self.fig, self.axes = plt.subplots()
+        else:
+            self.fig = fig
+            self.axes = axes
         self.fig.subplots_adjust(bottom=0.2)
 
         self.image = plt.imshow(states[0], cmap="viridis")
@@ -75,3 +79,49 @@ class SimulationAnimation:
 
     def show_animation(self):
         self.plotting_handler.show_plot()
+
+
+# BUG
+class MultiPlotsSingleSlider:
+    def __init__(self, repeat: bool = False, *args):
+        self.all_states = args
+
+        self.check_states()
+
+        self.fig, self.axes = plt.subplots(len(self.all_states), 1)
+
+        self.plotting_handlers = list()
+        for i, states in enumerate(self.all_states):
+            self.plotting_handlers.append(
+                PlottingHandler(states, self.fig, self.axes[i])
+            )
+
+        ax_slider = self.fig.add_axes([0.2, 0.01, 0.65, 0.03])
+        self.slider_handler = SliderHandler(ax_slider, len(states))
+        self.update_handler = UpdateHandler(self.plotting_handler, self.slider_handler)
+
+        self.ani = FuncAnimation(
+            self.fig,
+            self.update_handler.update,
+            frames=len(states),
+            blit=True,
+            repeat=repeat,
+        )
+
+        self.slider_handler.on_changed(self.update_handler.update)
+
+    def check_states(self):
+        if not self.all_states:
+            return False
+
+        # Get the shape of the first array
+        first_shape = len(self.all_states[0])
+
+        # Use np.all to check if all shapes match the first shape
+        return [len(state) == first_shape for state in self.all_states[1:]]
+
+    def set_title(self, title):
+        self.fig.set_title(title)
+
+    def show_animation(self):
+        self.fig.show()
